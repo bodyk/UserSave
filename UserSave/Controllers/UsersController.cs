@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using UserSave.Models;
+using UserSave.Models.Interfaces;
 
 namespace UserSave.Controllers
 {
@@ -15,16 +17,26 @@ namespace UserSave.Controllers
     /// </summary>
     public class UsersController : ApiController
     {
-        private UserContext db = new UserContext();
+        private readonly IRepository<User> _userRepository;
+
+        /// <inheritdoc />
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userRepository"></param>
+        public UsersController(IRepository<User> userRepository)
+        {
+            _userRepository = userRepository;
+        }
 
         // GET: api/Users
         /// <summary>
         /// Method to get information about all users
         /// </summary>
         /// <returns></returns>
-        public IQueryable<User> GetUsers()
+        public async Task<IEnumerable<User>> GetUsers()
         {
-            return db.Users;
+            return await _userRepository.GetAll();
         }
 
         // GET: api/Users/5
@@ -36,7 +48,7 @@ namespace UserSave.Controllers
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> GetUser(int id)
         {
-            User user = await db.Users.FindAsync(id);
+            User user = await _userRepository.Get(id);
             if (user == null)
             {
                 return NotFound();
@@ -64,23 +76,15 @@ namespace UserSave.Controllers
             {
                 return BadRequest();
             }
-
-            db.Entry(user).State = EntityState.Modified;
+            
 
             try
             {
-                await db.SaveChangesAsync();
+                _userRepository.Update(user);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound();
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -100,8 +104,7 @@ namespace UserSave.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Users.Add(user);
-            await db.SaveChangesAsync();
+            _userRepository.Create(user);
 
             return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
         }
@@ -115,35 +118,15 @@ namespace UserSave.Controllers
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> DeleteUser(int id)
         {
-            User user = await db.Users.FindAsync(id);
+            User user = await _userRepository.Get(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            db.Users.Remove(user);
-            await db.SaveChangesAsync();
+            _userRepository.Delete(user);
 
             return Ok(user);
-        }
-
-        /// <inheritdoc />
-        /// <summary>
-        /// Method to close or release unmanaged resources
-        /// </summary>
-        /// <param name="disposing"></param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool UserExists(int id)
-        {
-            return db.Users.Count(e => e.Id == id) > 0;
         }
     }
 }
