@@ -3,8 +3,13 @@ using System.Data.Entity;
 
 namespace UserSave.Models
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Initialize default data
+    /// </summary>
     public class UserInitializer : CreateDatabaseIfNotExists<UserContext>
     {
+        /// <inheritdoc />
         protected override void Seed(UserContext context)
         {
             IList<User> defaultUsers = new List<User>
