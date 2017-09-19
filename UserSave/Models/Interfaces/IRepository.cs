@@ -3,42 +3,46 @@ using System.Threading.Tasks;
 
 namespace UserSave.Models.Interfaces
 {
+    /// <summary>
+    /// Generic repository
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IRepository<T> where T : class
     {
         /// <summary>
-        /// 
+        /// Get all items
         /// </summary>
         /// <returns></returns>
         Task<IEnumerable<T>> GetAll();
 
         /// <summary>
-        /// 
+        /// Get specific item by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         Task<T> Get(int id);
 
         /// <summary>
-        /// 
+        /// Create single item
         /// </summary>
         /// <param name="item"></param>
-        void Create(T item);
+        Task Create(T item);
 
         /// <summary>
-        /// 
+        /// Update information about existing item
         /// </summary>
         /// <param name="item"></param>
-        void Update(T item);
+        Task Update(T item);
 
         /// <summary>
-        /// 
+        /// Delete specific item
         /// </summary>
         /// <param name="item"></param>
-        void Delete(T item);
+        Task Delete(T item);
 
         /// <summary>
-        /// 
+        /// Remove all items
         /// </summary>
-        void Clear();
+        Task Clear();
     }
 }

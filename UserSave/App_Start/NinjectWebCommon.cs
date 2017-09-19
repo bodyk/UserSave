@@ -1,3 +1,5 @@
+using UserSave.Models.Interfaces;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(UserSave.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(UserSave.App_Start.NinjectWebCommon), "Stop")]
 
@@ -10,7 +12,13 @@ namespace UserSave.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using System.Web.Http;
+    using Ninject.Web.WebApi;
+    using UserSave.Models.Implementations;
 
+    /// <summary>
+    /// Bootstrapper for the application.
+    /// </summary>
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -61,6 +69,7 @@ namespace UserSave.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-        }        
+            kernel.Bind<IUserRepository>().To<UserRepository>();
+        }
     }
 }

@@ -1,14 +1,15 @@
-using System.Web.Http;
-using WebActivatorEx;
-using UserSave;
 using Swashbuckle.Application;
-using System;
-using System.Xml.XPath;
+using System.Web.Http;
+using UserSave;
+using WebActivatorEx;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
 namespace UserSave
 {
+    /// <summary>
+    /// Config Swagger framework
+    /// </summary>
     public class SwaggerConfig
     {
         public static void Register()

@@ -24,7 +24,7 @@ namespace UserSave.Controllers
         /// 
         /// </summary>
         /// <param name="userRepository"></param>
-        public UsersController(IRepository<User> userRepository)
+        public UsersController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -80,7 +80,7 @@ namespace UserSave.Controllers
 
             try
             {
-                _userRepository.Update(user);
+                await _userRepository.Update(user);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -104,9 +104,9 @@ namespace UserSave.Controllers
                 return BadRequest(ModelState);
             }
 
-            _userRepository.Create(user);
+            await _userRepository.Create(user);
 
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+            return Ok(user);
         }
 
         // DELETE: api/Users/5
@@ -124,7 +124,7 @@ namespace UserSave.Controllers
                 return NotFound();
             }
 
-            _userRepository.Delete(user);
+            await _userRepository.Delete(user);
 
             return Ok(user);
         }

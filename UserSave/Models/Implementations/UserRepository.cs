@@ -8,7 +8,7 @@ namespace UserSave.Models.Implementations
     /// <summary>
     /// Repository to work with user entities
     /// </summary>
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUserRepository
     {
         private readonly UserContext _context;
 
@@ -21,61 +21,47 @@ namespace UserSave.Models.Implementations
             _context = context;
         }
 
-        /// <summary>
-        /// Get info about all users
-        /// </summary>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<IEnumerable<User>> GetAll()
         {
             return await _context.Users.ToArrayAsync();
         }
 
-        /// <summary>
-        /// Get user by specific id
-        /// </summary>
-        /// <param name="id">Id field that represent unique identifier for User</param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public async Task<User> Get(int id)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        /// <summary>
-        /// Add new User to users
-        /// </summary>
-        /// <param name="item">New User instance</param>
-        public void Create(User item)
+        /// <inheritdoc />
+        public async Task Create(User item)
         {
             if (item != null)
             {
                 _context.Users.Add(item);
+                await _context.SaveChangesAsync();
             }
         }
 
-        /// <summary>
-        /// Update info about specific user
-        /// </summary>
-        /// <param name="item">User instance to update</param>
-        public void Update(User item)
+        /// <inheritdoc />
+        public async Task Update(User item)
         {
             _context.Entry(item).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
-        /// <summary>
-        /// Delete info about specific user
-        /// </summary>
-        /// <param name="item">User instance to delete</param>
-        public void Delete(User item)
+        /// <inheritdoc />
+        public async Task Delete(User item)
         {
             _context.Users.Remove(item);
+            await _context.SaveChangesAsync();
         }
 
-        /// <summary>
-        /// Remove all users
-        /// </summary>
-        public void Clear()
+        /// <inheritdoc />
+        public async Task Clear()
         {
             _context.Users.RemoveRange(_context.Users);
+            await _context.SaveChangesAsync();
         }
     }
 }
