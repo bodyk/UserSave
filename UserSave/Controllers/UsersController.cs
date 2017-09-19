@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using UserSave.Models;
 using UserSave.Models.Interfaces;
@@ -15,6 +16,7 @@ namespace UserSave.Controllers
     /// <summary>
     /// Controller to manage users
     /// </summary>
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
         private readonly IRepository<User> _userRepository;

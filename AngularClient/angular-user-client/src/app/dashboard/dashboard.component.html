@@ -1,3 +1,23 @@
-<p>
-  dashboard works!
-</p>
+<div class="container" *ngIf="users | async; let users;">
+    <div class="row" *ngFor="let user of users">
+        <div class="col-xs-12 col-sm-12">
+            <div class="row">
+                <div class="column col-xs-4 col-sm-8">
+                    {{user.Name}}
+                </div>
+                <!-- <div class="column col-xs-8 col-sm-12">
+                    {{user.Surname}}
+                </div>
+                <div class="column col-xs-4 col-sm-8">
+                    {{user.Email}}
+                </div>
+                <div class="column col-xs-4 col-sm-8">
+                    {{user.Gender}}
+                </div> -->
+                <div class="column columnDelete col-xs-4 col-sm-2">
+                    <button (click)="onDeleteUser(user.name)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
