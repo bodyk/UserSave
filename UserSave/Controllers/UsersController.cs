@@ -33,9 +33,11 @@ namespace UserSave.Controllers
 
         // GET: api/Users
         /// <summary>
-        /// Method to get information about all users
+        /// Get information about all users
         /// </summary>
         /// <returns></returns>
+        [Authorize(Roles = "admin")]
+        [HttpGet]
         public async Task<IEnumerable<User>> GetUsers()
         {
             return await _userRepository.GetAll();
@@ -47,6 +49,8 @@ namespace UserSave.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "admin")]
+        [HttpGet]
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> GetUser(int id)
         {
