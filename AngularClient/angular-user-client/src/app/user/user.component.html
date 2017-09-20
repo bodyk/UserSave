@@ -4,7 +4,7 @@
     <div>
         <label>Name</label>
         <input type="text" formControlName="name">
-        <small [hidden]="myForm.controls.name.valid || (myForm.controls.name.pristine && !submitted)">
+        <small [hidden]="myForm.controls.name.valid || (myForm.controls.name.pristine && !submitted) || !myForm.controls.name.touched">
             Name is required.
         </small>
     </div>
@@ -12,7 +12,7 @@
     <div>
         <label>Surname</label>
         <input type="text" formControlName="surname">
-        <small [hidden]="myForm.controls.name.valid || (myForm.controls.surname.pristine && !submitted)">
+        <small [hidden]="myForm.controls.surname.valid || (myForm.controls.surname.pristine && !submitted) || !myForm.controls.surname.touched">
             Surname is required.
         </small>
     </div>
@@ -20,22 +20,22 @@
     <div>
         <label>Email</label>
         <input type="text" formControlName="email">
-        <small [hidden]="myForm.controls.name.valid || (myForm.controls.email.pristine && !submitted)">
-            Email is required.
+        <small [hidden]="myForm.controls.email.valid || (myForm.controls.email.pristine && !submitted) || !myForm.controls.email.touched">
+            Email is not valid.
         </small>
     </div>
 
     <div>
         <label>Gender</label>
-        <select formControlName="gender">
-              <option *ngFor="let key of keys" [value]="key" [label]="key"></option>
-            </select>
-        <small [hidden]="myForm.controls.name.valid || (myForm.controls.gender.pristine && !submitted)">
+        <select formControlName="gender" ng-init="keys[0]">
+            <option *ngFor="let key of keys" [value]="key" [label]="key"></option>
+        </select>
+        <small [hidden]="myForm.controls.gender.valid || (myForm.controls.gender.pristine && !submitted)">
             Gender is required.
         </small>
     </div>
 
-    <button type="submit">Submit</button>
+    <button type="submit" [disabled]="!myForm.valid">Submit</button>
 
 </form>
 
