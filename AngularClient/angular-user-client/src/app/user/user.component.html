@@ -1,3 +1,81 @@
-<p>
-  user works!
-</p>
+<form [formGroup]="myForm" novalidate (ngSubmit)="onAddUser(myForm.value, myForm.valid)">
+
+    <!-- We'll add our form controls here -->
+    <div>
+        <label>Name</label>
+        <input type="text" formControlName="name">
+        <small [hidden]="myForm.controls.name.valid || (myForm.controls.name.pristine && !submitted)">
+            Name is required.
+        </small>
+    </div>
+
+    <div>
+        <label>Surname</label>
+        <input type="text" formControlName="surname">
+        <small [hidden]="myForm.controls.name.valid || (myForm.controls.surname.pristine && !submitted)">
+            Surname is required.
+        </small>
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input type="text" formControlName="email">
+        <small [hidden]="myForm.controls.name.valid || (myForm.controls.email.pristine && !submitted)">
+            Email is required.
+        </small>
+    </div>
+
+    <div>
+        <label>Gender</label>
+        <select formControlName="gender">
+              <option *ngFor="let key of keys" [value]="key" [label]="key"></option>
+            </select>
+        <small [hidden]="myForm.controls.name.valid || (myForm.controls.gender.pristine && !submitted)">
+            Gender is required.
+        </small>
+    </div>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<!-- <div *ngIf="!user; else forminfo">
+    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+        <div class="form-container">
+            <div class="row">
+                <label>Name
+                  <input type="text" formControlName="name">
+                </label>
+            </div>
+            <div class="row">
+                <label>Surname
+                  <input type="text" formControlName="surname">
+                </label>
+            </div>
+            <div class="row">
+                <label>Email
+                  <input type="text" formControlName="email">
+                </label>
+            </div>
+            <div class="row">
+                <label>Gender
+                  <input type="text" formControlName="gender">
+                </label>
+            </div>
+            <div class="row">
+                <input type="submit" class="btn .btn-success" value="Submit" [disabled]="!rForm.valid">
+            </div>
+        </div>
+    </form>
+</div>
+
+<ng-template #forminfo>
+    <div class="form-container">
+        <div class="row columns">
+            <h1>{{ user.Name }}</h1>
+            <h1>{{ user.Surname }}</h1>
+            <h1>{{ user.Email }}</h1>
+            <h1>{{ user.Gender }}</h1>
+        </div>
+    </div>
+</ng-template> -->

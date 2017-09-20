@@ -1,23 +1,66 @@
-<div class="container" *ngIf="users | async; let users;">
-    <div class="row" *ngFor="let user of users">
-        <div class="col-xs-12 col-sm-12">
+<div class="container text-center" *ngIf="users | async; let users;">
+    <div class="row row-header">
+        <div class="col-sm-4 col-md-4">
             <div class="row">
-                <div class="column col-xs-4 col-sm-8">
-                    {{user.Name}}
+                <div class="col-sm-12 col-md-6">Name</div>
+                <div class="col-sm-12 col-md-6">Surname</div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">Email</div>
+                <div class="col-sm-12 col-md-6">Gender</div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngFor="let user of users">
+        <div class="col-sm-4 col-md-4">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">{{user.Name}}</div>
+                <div class="col-sm-12 col-md-6">{{user.Surname}}</div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">{{user.Email}}</div>
+                <div class="col-sm-12 col-md-6">{{genderType[user.Gender]}}</div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <a class="nav-link" routerLink="../user" [queryParams]="{ id: user.Id }" routerLinkActive="active">
+                        <button>Edit</button>
+                    </a>
                 </div>
-                <!-- <div class="column col-xs-8 col-sm-12">
-                    {{user.Surname}}
-                </div>
-                <div class="column col-xs-4 col-sm-8">
-                    {{user.Email}}
-                </div>
-                <div class="column col-xs-4 col-sm-8">
-                    {{user.Gender}}
-                </div> -->
-                <div class="column columnDelete col-xs-4 col-sm-2">
-                    <button (click)="onDeleteUser(user.name)">Delete</button>
+                <div class="col-sm-12 col-md-6">
+                    <button (click)="onDeleteUser(user.Id)">Delete</button>
                 </div>
             </div>
         </div>
+        <!-- <div class="col-xs-2 text-center">
+            {{user.Name}}
+        </div>
+        <div class="col-xs-2 col-half-offset text-center">
+            {{user.Surname}}
+        </div>
+        <div class="col-xs-2 col-half-offset text-center">
+            {{user.Email}}
+        </div>
+        <div class="col-xs-2 col-half-offset text-center">
+            {{user.Gender}}
+        </div>
+        <div class="col-xs-2 align-self-end text-center">
+            <button (click)="onEditUser(user.Id)">Edit</button>
+        </div>
+        <div class="col-xs-2 col-half-offset columnDelete text-center">
+            <button (click)="onDeleteUser(user.Id)">Delete</button>
+        </div> -->
     </div>
 </div>

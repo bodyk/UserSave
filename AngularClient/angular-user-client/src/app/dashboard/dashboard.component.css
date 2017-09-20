@@ -18,3 +18,11 @@
 .columnDelete {
     float: right;
 }
+
+a {
+    color: black;
+}
+
+.row-header {
+    font-size: 1.5em;
+}
