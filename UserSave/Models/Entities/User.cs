@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using UserSave.DataAccess.Interfaces;
 
 namespace UserSave.Models
 {
@@ -20,14 +21,16 @@ namespace UserSave.Models
     /// <summary>
     /// User Model
     /// </summary>
-    public class User
+    public class User : IEntity
     {
         /// <summary>
         /// Property that represent unique identifier for user
         /// </summary>
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public long Id { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         /// <summary>
         /// User Name

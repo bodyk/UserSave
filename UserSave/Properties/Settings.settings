@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UserSave.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Issuer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UserSaveAuthServer</Value>
+    </Setting>
+    <Setting Name="Audience" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UserSaveAngularClient</Value>
+    </Setting>
+    <Setting Name="TokenLifeTime" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="PrivateKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">021bf657c2e986a04b9e43775253d5a7</Value>
+    </Setting>
+    <Setting Name="EmailLogin" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">balanykb@gmail.com</Value>
+    </Setting>
+    <Setting Name="EmailPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Txe7TYkqT79LwDjn</Value>
+    </Setting>
+    <Setting Name="EmailSMTP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">smtp.gmail.com</Value>
+    </Setting>
+    <Setting Name="EmailPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="EmailSSL" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AdminAccountId" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">19</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

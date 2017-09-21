@@ -1,10 +1,14 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.Owin.Security.OAuth;
 
-namespace UserSave.Authorization
+namespace UserSave.Providers
 {
-    public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
+    public class AuthorizationServerProvider: OAuthAuthorizationServerProvider
     {
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {

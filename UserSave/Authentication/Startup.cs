@@ -4,10 +4,11 @@ using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using UserSave.Providers;
 
-[assembly: OwinStartup(typeof(UserSave.Authorization.Startup))]
+[assembly: OwinStartup(typeof(UserSave.Authentication.Startup))]
 
-namespace UserSave.Authorization
+namespace UserSave.Authentication
 {
     public class Startup
     {

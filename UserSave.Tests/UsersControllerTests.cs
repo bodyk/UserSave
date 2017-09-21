@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http.Results;
 using UserSave.Controllers;
+using UserSave.DataAccess.Interfaces;
 using UserSave.Models;
 using UserSave.Models.Interfaces;
 
@@ -17,7 +18,7 @@ namespace UserSave.Tests
         /// <summary>
         /// Mock user repository for testing
         /// </summary>
-        private readonly Mock<IUserRepository> _userRepoMock;
+        private readonly Mock<IUnitOfWork> _unitOfWorkMock;
 
         /// <summary>
         /// Controller which will be testing inside this class
@@ -32,8 +33,8 @@ namespace UserSave.Tests
 
         public UsersControllerTests()
         {
-            _userRepoMock = new Mock<IUserRepository>();
-            _controller = new UsersController(_userRepoMock.Object);
+            _unitOfWorkMock = new Mock<IUnitOfWork>();
+            _controller = new UsersController(_unitOfWorkMock.Object);
 
             _defaultUsers = new List<User>
             {
@@ -48,14 +49,14 @@ namespace UserSave.Tests
         [SetUp]
         public void TestSetup()
         {
-            _userRepoMock.Setup(x => x.GetAll())
+            _unitOfWorkMock.Setup(x => x.UserRepository.GetAllAsync())
                 .ReturnsAsync(_defaultUsers);
         }
 
         [TearDown]
         public void TestTearDown()
         {
-            _userRepoMock.Reset();
+            _unitOfWorkMock.Reset();
         }
 
         #endregion
@@ -86,42 +87,29 @@ namespace UserSave.Tests
         }
 
         [Test]
-        public async Task PutUser_Returns_BadRequest_When_ModelState_Is_Invalid()
+        public void PutUser_Returns_BadRequest_When_ModelState_Is_Invalid()
         {
             // Arrange
             _controller.ModelState.AddModelError("Name", "Required");
 
             //Act
-            var actual = await _controller.PutUser(0, new User());
+            var actual = _controller.PutUser(0, new User());
 
             //Assert
             Assert.IsInstanceOf<InvalidModelStateResult>(actual);
         }
 
         [Test]
-        public async Task PostUser_Returns_BadRequest_When_ModelState_Is_Invalid()
+        public void PostUser_Returns_BadRequest_When_ModelState_Is_Invalid()
         {
             // Arrange
             _controller.ModelState.AddModelError("Name", "Required");
 
             //Act
-            var actual = await _controller.PostUser(new User());
+            var actual = _controller.PostUser(new User());
 
             //Assert
             Assert.IsInstanceOf<InvalidModelStateResult>(actual);
-        }
-
-        [Test]
-        public async Task DeleteUser_Returns_NotFound_When_Pass_Invalid_Id()
-        {
-            //Arrange
-            var invalidId = -1;
-
-            //Act
-            var actual = await _controller.DeleteUser(invalidId);
-
-            //Assert
-            Assert.IsInstanceOf<NotFoundResult>(actual);
         }
 
         #endregion

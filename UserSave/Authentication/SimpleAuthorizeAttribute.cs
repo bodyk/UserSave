@@ -1,10 +1,13 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Http.Controllers;
 
-namespace UserSave.Authorization
+namespace UserSave.Authentication
 {
-    public class AuthorizeAttribute: System.Web.Http.AuthorizeAttribute
+    public class SimpleAuthorizeAttribute : System.Web.Http.AuthorizeAttribute
     {
         protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
         {

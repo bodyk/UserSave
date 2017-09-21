@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using UserSave.Authentication;
+using UserSave.DataAccess.Interfaces;
 using UserSave.Models;
 using UserSave.Models.Interfaces;
 
@@ -17,18 +19,19 @@ namespace UserSave.Controllers
     /// Controller to manage users
     /// </summary>
     [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+    [SimpleAuthorize]
     public class UsersController : ApiController
     {
-        private readonly IRepository<User> _userRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
         /// <inheritdoc />
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="userRepository"></param>
-        public UsersController(IUserRepository userRepository)
+        /// <param name="unitOfWork"></param>
+        public UsersController(IUnitOfWork unitOfWork)
         {
-            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
         }
 
         // GET: api/Users
@@ -36,11 +39,10 @@ namespace UserSave.Controllers
         /// Get information about all users
         /// </summary>
         /// <returns></returns>
-        [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<IEnumerable<User>> GetUsers()
         {
-            return await _userRepository.GetAll();
+            return await _unitOfWork.UserRepository.GetAllAsync();
         }
 
         // GET: api/Users/5
@@ -49,12 +51,11 @@ namespace UserSave.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Roles = "admin")]
         [HttpGet]
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> GetUser(int id)
         {
-            User user = await _userRepository.Get(id);
+            User user = await _unitOfWork.UserRepository.GetByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -71,7 +72,7 @@ namespace UserSave.Controllers
         /// <param name="user"></param>
         /// <returns></returns>
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutUser(int id, User user)
+        public IHttpActionResult PutUser(int id, User user)
         {
             if (!ModelState.IsValid)
             {
@@ -86,7 +87,7 @@ namespace UserSave.Controllers
 
             try
             {
-                await _userRepository.Update(user);
+                _unitOfWork.UserRepository.Update(user);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -103,14 +104,14 @@ namespace UserSave.Controllers
         /// <param name="user"></param>
         /// <returns></returns>
         [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> PostUser(User user)
+        public IHttpActionResult PostUser(User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await _userRepository.Create(user);
+            _unitOfWork.UserRepository.Create(user);
 
             return Ok(user);
         }
@@ -122,17 +123,11 @@ namespace UserSave.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> DeleteUser(int id)
+        public IHttpActionResult DeleteUser(int id)
         {
-            User user = await _userRepository.Get(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+            _unitOfWork.UserRepository.Delete(id);
 
-            await _userRepository.Delete(user);
-
-            return Ok(user);
+            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }
