@@ -1,6 +1,7 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using UserSave.Models.Entities;
 
 namespace UserSave.Models
 {
@@ -19,11 +20,10 @@ namespace UserSave.Models
         {
 
         }
-
-        /// <summary>
-        /// All Users
-        /// </summary>
+        
         public DbSet<User> Users { get; set; }
+
+        public DbSet<SocialAccount> SocialAccounts { get; set; }
 
         /// <inheritdoc />
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

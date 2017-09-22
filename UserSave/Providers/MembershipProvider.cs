@@ -1,69 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Web;
+using UserSave.DataAccess.Interfaces;
+using UserSave.Models.Entities;
 using UserSave.Models.Interfaces;
 
 namespace UserSave.Providers
 {
     public class MembershipProvider : IMembershipProvider
     {
-        //private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        //public MembershipProvider(IUnitOfWork unitOfWork)
-        //{
-        //    _unitOfWork = unitOfWork;
-        //}
-
-        //public async Task<ClaimsIdentity> GetUserClaims(long accountId)
-        //{
-        //    var account = await _unitOfWork.AccountRepository.Query
-        //        .Include(a => a.Role)
-        //        .Where(a => !a.IsDeleted)
-        //        .SingleOrDefaultAsync(a => a.Id == accountId);
-        //    long profileId = 0;
-
-        //    switch (account.Role.Type)
-        //    {
-        //        case RoleType.Customer:
-        //        case RoleType.Admin:
-        //            profileId = _unitOfWork.CustomerRepository.Query.First(x => x.Person.Account.Id == account.Id).Id;
-        //            break;
-        //        case RoleType.Company:
-        //            profileId = _unitOfWork.CompanyRepository.Query.First(x => x.Account.Id == account.Id).Id;
-        //            break;
-        //        case RoleType.Vendor:
-        //            profileId = _unitOfWork.VendorRepository.Query.First(x => x.Person.Account.Id == account.Id).Id;
-        //            break;
-        //    }
-
-        //    var claims = new List<Claim>
-        //        {
-        //            new Claim("accountid", account.Id.ToString()),
-        //            new Claim("roleid", account.Role.Id.ToString()),
-        //            new Claim("profileid", profileId.ToString()),
-        //            new Claim("isbanned", account.IsBanned.ToString())
-        //        };
-
-        //    return new ClaimsIdentity(claims, "Token");
-        //}
-
-        //public async Task<long> VerifyUser(string provider, string uid)
-        //{
-        //    var socialAccount = await _unitOfWork.SocialAccountRepository.Query.Include(x => x.Account)
-        //        .FirstOrDefaultAsync(x => x.Provider == provider && x.Uid == uid);
-        //    return socialAccount == null ? 0 : socialAccount.Account.Id;
-        //}
-        public Task<long> VerifyUser(string provider, string uid)
+        public MembershipProvider(IUnitOfWork unitOfWork)
         {
-            throw new NotImplementedException();
+            _unitOfWork = unitOfWork;
         }
 
-        public Task<ClaimsIdentity> GetUserClaims(long accountId)
+        public async Task<long> VerifyUser(string provider, string uid)
         {
-            throw new NotImplementedException();
+            var socialAccount = await _unitOfWork.SocialAccountRepository.Query.Include(x => x.Account)
+                .FirstOrDefaultAsync(x => x.Provider == provider && x.Uid == uid);
+            return socialAccount?.Account.Id ?? 0;
         }
     }
 }

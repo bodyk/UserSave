@@ -1,0 +1,21 @@
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.social-buttons[hidden] {
+    display: none !important;
+}
+
+.sign-link:hover {
+    color: #FF647A;
+}
+
+.reg-header {
+    text-align: center;
+    font-family: 'Verdana', 'Century Gothic', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    text-transform: uppercase;
+}

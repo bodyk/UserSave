@@ -18,8 +18,8 @@ namespace UserSave.Controllers
     /// <summary>
     /// Controller to manage users
     /// </summary>
-    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
-    [SimpleAuthorize]
+    //[EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+    //[TokenAuthenticate]
     public class UsersController : ApiController
     {
         private readonly IUnitOfWork _unitOfWork;

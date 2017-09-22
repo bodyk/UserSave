@@ -181,7 +181,13 @@
     <Compile Include="Migrations\201709211448577_updateContext.Designer.cs">
       <DependentUpon>201709211448577_updateContext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709221514104_add_socialUser.cs" />
+    <Compile Include="Migrations\201709221514104_add_socialUser.Designer.cs">
+      <DependentUpon>201709221514104_add_socialUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Entities\Account.cs" />
+    <Compile Include="Models\Entities\SocialAccount.cs" />
     <Compile Include="Models\Entities\UserSocial.cs" />
     <Compile Include="Models\Interfaces\IAuthService.cs" />
     <Compile Include="Models\Interfaces\IMembershipProvider.cs" />
@@ -221,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709211448577_updateContext.resx">
       <DependentUpon>201709211448577_updateContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221514104_add_socialUser.resx">
+      <DependentUpon>201709221514104_add_socialUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

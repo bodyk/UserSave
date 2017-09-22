@@ -1,10 +1,15 @@
-<div class="allView">
+<div>
+    <app-shell></app-shell>
+</div>
+
+<!-- <div class="allView">
   <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
           <a class="navbar-brand">User Managment</a>
           <ul class="nav navbar-nav" routerLinkActive="active">
               <li class="nav-item"><a class="nav-link" routerLink="dashboard" routerLinkActive="active">Home</a></li>
               <li class="nav-item"><a class="nav-link" routerLink="user" routerLinkActive="active">Add User</a></li>
+              <li *ngIf="!isLogged;else authorized"><a (click)="openModal()" routerLinkActive="active">Sign In</a></li>              
           </ul>
       </div>
   </nav>
@@ -12,4 +17,4 @@
   <div class="contentView">
       <router-outlet></router-outlet>
   </div>
-</div>
+</div> -->

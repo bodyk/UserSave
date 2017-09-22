@@ -33,7 +33,7 @@ namespace UserSave.Services
                 return null;
             }
 
-            ClaimsIdentity identity = await membershipProvider.GetUserClaims(accountId); // Role, email etc.            
+            //ClaimsIdentity identity = await membershipProvider.GetUserClaims(accountId);
 
             var dateTimeNow = DateTime.UtcNow;
 
@@ -41,7 +41,7 @@ namespace UserSave.Services
                     issuer: Properties.Settings.Default.Issuer,
                     audience: Properties.Settings.Default.Audience,
                     notBefore: dateTimeNow,
-                    claims: identity.Claims,
+                    //claims: identity.Claims,
                     expires: new DateTime(2017, 09, 23),//dateTimeNow.Add(TimeSpan.FromMinutes(Properties.Settings.Default.TokenLifeTime)), // + 5 minutes by default claim time
                     signingCredentials: new SigningCredentials(GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
 
