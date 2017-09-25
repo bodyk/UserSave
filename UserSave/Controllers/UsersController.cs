@@ -123,9 +123,9 @@ namespace UserSave.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
+        public async Task<IHttpActionResult> DeleteUser(int id)
         {
-            _unitOfWork.UserRepository.Delete(id);
+            await _unitOfWork.UserRepository.Delete(id);
 
             return StatusCode(HttpStatusCode.NoContent);
         }

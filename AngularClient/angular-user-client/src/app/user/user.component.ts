@@ -32,7 +32,6 @@ export class UserComponent implements OnInit {
   }
 
   onAddUser(user: User, isValid: boolean) : void {
-    debugger;
     if (!isValid)
       return;
 

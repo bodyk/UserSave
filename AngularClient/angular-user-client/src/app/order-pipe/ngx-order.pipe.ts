@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class OrderPipe implements PipeTransform {
 
   transform(value: any | any[], expression?: any, reverse?: boolean): any {
-      debugger;
     if (!value) {
       return value;
     }
@@ -50,7 +49,6 @@ export class OrderPipe implements PipeTransform {
 
       return OrderPipe.getValue(a, expression) > OrderPipe.getValue(b, expression) ? 1 : -1;
     });
-    debugger;
     if (reverse) {
       return array.reverse();
     }

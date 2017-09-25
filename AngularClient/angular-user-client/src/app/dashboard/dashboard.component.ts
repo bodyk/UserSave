@@ -30,11 +30,11 @@ export class DashboardComponent implements OnInit {
   }
 
   onDeleteUser(id: number) : void {
+    debugger;
     this.userService.deleteUser(id).then(() => this.updateUsers());
   }
 
   setOrder(value: string) {
-    debugger;
     if (this.sortType === value) {
       this.sortReverse = !this.sortReverse;
     }

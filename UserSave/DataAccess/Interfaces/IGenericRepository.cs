@@ -15,10 +15,6 @@ namespace UserSave.DataAccess.Interfaces
         Task<T> GetByIdDeletedAsync(long id);
         Task<T> Create(T item);
         void Update(T item);
-        void Delete(long id);
-        Task ForceDelete(long id);
-        Task Restore(long id);
-        IQueryable<T> Query { get; }
-        IQueryable<T> Deleted { get; }
+        Task Delete(long id);
     }
 }

@@ -36,14 +36,11 @@ export class AuthenticationLoginService {
   }
 
   public loginWithFacebook() {
-    debugger;
     return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then(data => {
-        debugger;
         return this.initializeUser(data.user);
       })
       .then(user => {
-        debugger;
         return this.httpService.postFullRequest(this.apiController, user);
       });
   }

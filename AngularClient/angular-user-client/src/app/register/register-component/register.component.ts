@@ -63,7 +63,6 @@ export class RegisterComponent implements OnInit {
   }
 
   handleResponse(resp: any): void {
-    debugger;
     switch (resp.status) {
       case 204: {
         this.error = false;

@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using UserSave.DataAccess.Interfaces;
 using UserSave.Models.Entities;
@@ -17,9 +18,10 @@ namespace UserSave.Providers
 
         public async Task<long> VerifyUser(string provider, string uid)
         {
-            var socialAccount = await _unitOfWork.SocialAccountRepository.Query.Include(x => x.Account)
-                .FirstOrDefaultAsync(x => x.Provider == provider && x.Uid == uid);
-            return socialAccount?.Account.Id ?? 0;
+            throw new NotImplementedException();
+            //var socialAccount = await _unitOfWork.SocialAccountRepository.Query.Include(x => x.Account)
+            //    .FirstOrDefaultAsync(x => x.Provider == provider && x.Uid == uid);
+            //return socialAccount?.Account.Id ?? 0;
         }
     }
 }

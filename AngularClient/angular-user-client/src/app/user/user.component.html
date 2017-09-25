@@ -1,6 +1,4 @@
-<form [formGroup]="myForm" novalidate (ngSubmit)="onAddUser(myForm.value, myForm.valid)">
-
-    <!-- We'll add our form controls here -->
+<!-- <form [formGroup]="myForm" novalidate (ngSubmit)="onAddUser(myForm.value, myForm.valid)">
     <div>
         <label>Name</label>
         <input type="text" formControlName="name">
@@ -37,45 +35,58 @@
 
     <button type="submit" [disabled]="!myForm.valid">Submit</button>
 
+</form> -->
+
+<form class="form-horizontal"  [formGroup]="myForm" novalidate (ngSubmit)="onAddUser(myForm.value, true)">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Add user</legend>
+
+        <!-- Name input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="name"></label>
+            <div class="col-md-4">
+                <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Surname input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="surname"></label>
+            <div class="col-md-4">
+                <input id="surname" name="surname" type="text" placeholder="Surname" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Email input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email"></label>
+            <div class="col-md-4">
+                <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="gender"></label>
+            <div class="col-md-4">
+                <select id="gender" name="gender" class="form-control">
+                    <option *ngFor="let key of keys" [value]="key" [label]="key"></option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Submit"></label>
+            <div class="col-md-4">
+                <button id="Submit" name="Submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+    </fieldset>
 </form>
-
-<!-- <div *ngIf="!user; else forminfo">
-    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
-        <div class="form-container">
-            <div class="row">
-                <label>Name
-                  <input type="text" formControlName="name">
-                </label>
-            </div>
-            <div class="row">
-                <label>Surname
-                  <input type="text" formControlName="surname">
-                </label>
-            </div>
-            <div class="row">
-                <label>Email
-                  <input type="text" formControlName="email">
-                </label>
-            </div>
-            <div class="row">
-                <label>Gender
-                  <input type="text" formControlName="gender">
-                </label>
-            </div>
-            <div class="row">
-                <input type="submit" class="btn .btn-success" value="Submit" [disabled]="!rForm.valid">
-            </div>
-        </div>
-    </form>
-</div>
-
-<ng-template #forminfo>
-    <div class="form-container">
-        <div class="row columns">
-            <h1>{{ user.Name }}</h1>
-            <h1>{{ user.Surname }}</h1>
-            <h1>{{ user.Email }}</h1>
-            <h1>{{ user.Gender }}</h1>
-        </div>
-    </div>
-</ng-template> -->
