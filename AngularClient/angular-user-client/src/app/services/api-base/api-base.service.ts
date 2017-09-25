@@ -22,4 +22,8 @@ export class ApiBaseService {
   protected post(postRequest: string, content: any): Promise<any> {
     return this.http.post(postRequest, content).toPromise();
   }
+
+  protected put(putRequest: string, content: any): Promise<any> {
+    return this.http.put(putRequest, content).toPromise();
+  }
 }

@@ -157,6 +157,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Authentication\AuthenticationFilter.cs" />
     <Compile Include="Authentication\Helpers\AuthenticationFailureResult.cs" />
     <Compile Include="Authentication\SimpleAuthorizeAttribute.cs" />
     <Compile Include="Authentication\Startup.cs" />

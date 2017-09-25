@@ -51,9 +51,7 @@
         <div class="col-sm-4 col-md-4">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <a class="nav-link" routerLink="../user" [queryParams]="{ id: user.Id }" routerLinkActive="active">
-                        <button>Edit</button>
-                    </a>
+                    <button (click)="onEditUser(user.Id)">Edit</button>
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <button (click)="onDeleteUser(user.Id)">Delete</button>

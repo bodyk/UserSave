@@ -13,6 +13,9 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent
   }, {
+    path: 'user/:id',
+    component: UserComponent
+  },{
     path: 'user',
     component: UserComponent
   }

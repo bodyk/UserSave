@@ -16,8 +16,16 @@ export class UserService extends ApiBaseService {
     return this.get(this.baseRequest);
   }
 
+  getUserById(id: number) {
+    return this.get(this.baseRequest + '/' + id);
+  }
+
   addUser(user: User) : Promise<any> {
     return this.post(this.baseRequest + user.Name, user);
+  }
+
+  putUser(user: User) : Promise<any> {
+    return this.put(this.baseRequest + user.Name, user);
   }
 
   deleteUser(id: number) : Promise<any> {
