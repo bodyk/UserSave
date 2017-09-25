@@ -13,7 +13,7 @@ namespace UserSave.DataAccess.Interfaces
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(long id);
         Task<T> GetByIdDeletedAsync(long id);
-        T Create(T item);
+        Task<T> Create(T item);
         void Update(T item);
         void Delete(long id);
         Task ForceDelete(long id);

@@ -26,3 +26,19 @@ a {
 .row-header {
     font-size: 1.5em;
 }
+
+.row div div {
+    cursor: pointer;
+  
+    span {
+      visibility: hidden;
+    }
+  
+    &.active {
+      color: #000;
+        font-size: 25px;
+      span {
+        visibility: visible;
+      }
+    }
+  }

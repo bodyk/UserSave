@@ -23,6 +23,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { DataService } from "./services/data/data.service";
 import { RegisterUserComponent } from './register/register-user/register-user.component';
 
+import { OrderModule } from './order-pipe/ngx-order.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import { RegisterUserComponent } from './register/register-user/register-user.co
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'user-angular'),
     AngularFireAuthModule,
-    HttpModule
+    HttpModule,
+    OrderModule
   ],
   providers: [
     AuthenticationLoginService,

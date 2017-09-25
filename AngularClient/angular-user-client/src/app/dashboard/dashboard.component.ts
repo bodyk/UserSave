@@ -8,13 +8,18 @@ import { Gender} from "../models/Gender";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
   users: Observable<User[]>;
   genderType: any = Gender;
+  sortType: string;
+  sortReverse: boolean;
 
-  constructor(private userService: UserService, private http: Http) { }
+  constructor(private userService: UserService, private http: Http) { 
+    this.sortType = 'name';
+    this.sortReverse = false;
+  }
 
   ngOnInit() {
     this.updateUsers();    
@@ -26,6 +31,15 @@ export class DashboardComponent implements OnInit {
 
   onDeleteUser(id: number) : void {
     this.userService.deleteUser(id).then(() => this.updateUsers());
+  }
+
+  setOrder(value: string) {
+    debugger;
+    if (this.sortType === value) {
+      this.sortReverse = !this.sortReverse;
+    }
+
+    this.sortType = value;
   }
 
 }

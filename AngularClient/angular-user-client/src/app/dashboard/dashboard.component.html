@@ -2,14 +2,30 @@
     <div class="row row-header">
         <div class="col-sm-4 col-md-4">
             <div class="row">
-                <div class="col-sm-12 col-md-6">Name</div>
-                <div class="col-sm-12 col-md-6">Surname</div>
+                <div class="col-sm-12 col-md-6">
+                    <div href="#" [class.active]="sortType === 'Name'" (click)="setOrder('Name')">
+                        Name <span [hidden]="sortReverse">▼</span><span [hidden]="!sortReverse">▲</span>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div [class.active]="sortType === 'Surname'" (click)="setOrder('Surname')">
+                        Surname <span [hidden]="sortReverse">▼</span><span [hidden]="!sortReverse">▲</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-sm-4 col-md-4">
             <div class="row">
-                <div class="col-sm-12 col-md-6">Email</div>
-                <div class="col-sm-12 col-md-6">Gender</div>
+                <div class="col-sm-12 col-md-6">
+                    <div [class.active]="sortType === 'Email'" (click)="setOrder('Email')">
+                        Email <span [hidden]="sortReverse">▼</span><span [hidden]="!sortReverse">▲</span>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div [class.active]="sortType === 'Gender'" (click)="setOrder('Gender')">
+                        Gender <span [hidden]="sortReverse">▼</span><span [hidden]="!sortReverse">▲</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-sm-4 col-md-4">
@@ -19,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div class="row" *ngFor="let user of users">
+    <div class="row" *ngFor="let user of users | orderBy:sortType:sortReverse">
         <div class="col-sm-4 col-md-4">
             <div class="row">
                 <div class="col-sm-12 col-md-6">{{user.Name}}</div>

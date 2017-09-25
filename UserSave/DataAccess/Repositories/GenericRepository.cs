@@ -31,7 +31,7 @@ namespace UserSave.DataAccess.Repositories
             return await Deleted.SingleOrDefaultAsync(i => i.Id == id);
         }
 
-        public T Create(T entity)
+        public async Task<T> Create(T entity)
         {
             try
             {
@@ -39,7 +39,9 @@ namespace UserSave.DataAccess.Repositories
                 {
                     throw new ArgumentNullException(nameof(entity));
                 }
-                return Entities.Add(entity);
+                var res = Entities.Add(entity);
+                await _context.SaveChangesAsync();
+                return res;
             }
             catch (Exception ex)
             {

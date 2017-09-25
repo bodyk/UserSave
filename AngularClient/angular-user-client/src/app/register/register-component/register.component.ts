@@ -103,30 +103,30 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  loginWithFacebook() {
-    this.floader = true;
-    this.authLoginService.loginWithFacebook()
-      .then(resp => {
-        this.floader = false;
-        this.handleResponse(resp);
-      })
-      .catch(err => {
-        this.floader = false;
-        this.handleErrorLogin();
-      });
-  }
+  // loginWithFacebook() {
+  //   this.floader = true;
+  //   this.authLoginService.loginWithFacebook()
+  //     .then(resp => {
+  //       this.floader = false;
+  //       this.handleResponse(resp);
+  //     })
+  //     .catch(err => {
+  //       this.floader = false;
+  //       this.handleErrorLogin();
+  //     });
+  // }
 
-  loginWithTwitter() {
-    this.tloader = true;
-    this.authLoginService.loginWithTwitter()
-      .then(resp => {
-        this.tloader = false;
-        this.handleResponse(resp);
-      })
-      .catch(err => {
-        this.tloader = false;
-        this.handleErrorLogin();
-      });
-  }
+  // loginWithTwitter() {
+  //   this.tloader = true;
+  //   this.authLoginService.loginWithTwitter()
+  //     .then(resp => {
+  //       this.tloader = false;
+  //       this.handleResponse(resp);
+  //     })
+  //     .catch(err => {
+  //       this.tloader = false;
+  //       this.handleErrorLogin();
+  //     });
+  // }
 
 }
