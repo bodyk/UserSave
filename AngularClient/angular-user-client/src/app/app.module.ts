@@ -25,6 +25,7 @@ import { RegisterUserComponent } from './register/register-user/register-user.co
 
 import { OrderModule } from './order-pipe/ngx-order.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,10 +40,9 @@ import { OrderModule } from './order-pipe/ngx-order.module';
   imports: [
     SuiModule,
     BrowserModule,
+    FormsModule,
     HttpClientModule,    
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'user-angular'),
     AngularFireAuthModule,
     HttpModule,

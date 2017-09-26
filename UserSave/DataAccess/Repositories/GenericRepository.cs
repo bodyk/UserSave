@@ -49,7 +49,7 @@ namespace UserSave.DataAccess.Repositories
             }
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
             try
             {
@@ -58,6 +58,7 @@ namespace UserSave.DataAccess.Repositories
                     throw new ArgumentNullException(nameof(entity));
                 }
                 _context.Entry(entity).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {

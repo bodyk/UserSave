@@ -1,6 +1,6 @@
 import { Gender } from "./Gender";
 
-export interface User {
+export class User {
     Id: number;
     Name: string;
     Surname: string;

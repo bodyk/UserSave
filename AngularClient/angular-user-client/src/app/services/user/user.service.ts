@@ -21,11 +21,11 @@ export class UserService extends ApiBaseService {
   }
 
   addUser(user: User) : Promise<any> {
-    return this.post(this.baseRequest + user.Name, user);
+    return this.post(this.baseRequest, user);
   }
 
   putUser(user: User) : Promise<any> {
-    return this.put(this.baseRequest + user.Name, user);
+    return this.put(this.baseRequest + '/' + user.Id, user);
   }
 
   deleteUser(id: number) : Promise<any> {

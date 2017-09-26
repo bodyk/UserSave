@@ -14,7 +14,7 @@ namespace UserSave.DataAccess.Interfaces
         Task<T> GetByIdAsync(long id);
         Task<T> GetByIdDeletedAsync(long id);
         Task<T> Create(T item);
-        void Update(T item);
+        Task Update(T item);
         Task Delete(long id);
     }
 }
