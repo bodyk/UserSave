@@ -7,7 +7,6 @@ namespace UserSave.Models.Entities
     public class Account : IEntity
     {
         public long Id { get; set; }
-        public bool IsDeleted { get; set; }
 
         public string Email { get; set; }
 

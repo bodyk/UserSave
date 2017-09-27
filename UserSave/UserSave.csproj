@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201709221514104_add_socialUser.Designer.cs">
       <DependentUpon>201709221514104_add_socialUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709271204349_remove_isDeleted.cs" />
+    <Compile Include="Migrations\201709271204349_remove_isDeleted.Designer.cs">
+      <DependentUpon>201709271204349_remove_isDeleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Account.cs" />
     <Compile Include="Models\Entities\SocialAccount.cs" />
@@ -231,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709221514104_add_socialUser.resx">
       <DependentUpon>201709221514104_add_socialUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709271204349_remove_isDeleted.resx">
+      <DependentUpon>201709271204349_remove_isDeleted.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -30,8 +30,6 @@ namespace UserSave.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-        public bool IsDeleted { get; set; }
-
         /// <summary>
         /// User Name
         /// </summary>
