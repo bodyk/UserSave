@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu } from './Menu';
-import './Header.css';
 import PropTypes from 'prop-types';
+import './Header.css';
 
 export class Header extends React.Component {
     render() {

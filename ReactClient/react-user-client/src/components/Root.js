@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header } from './menu/Header';
 import { Main } from './Main';
+import { Footer } from './Footer';
 
 export class Root extends Component {
   constructor(props) {
@@ -21,6 +22,9 @@ export class Root extends Component {
             <div className="col-xs-10 col-xs-offset-1">
               <Main />
             </div>
+          </div>
+          <div className="col-xs-10 col-xs-offset-1">
+            <Footer/>
           </div>
         </div>
       </div>
