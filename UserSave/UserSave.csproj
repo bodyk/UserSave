@@ -212,11 +212,11 @@
       <DependentUpon>201710061438388_remove-OnModelCreating.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Infrastructure\ApplicationUser.cs" />
     <Compile Include="Models\CreateUserBindingModel.cs" />
     <Compile Include="Models\Interfaces\IRepository.cs" />
     <Compile Include="Models\Entities\User.cs" />
-    <Compile Include="Models\Entities\UserContext.cs" />
+    <Compile Include="Models\Entities\ApplicationDbContext.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\UserReturnModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

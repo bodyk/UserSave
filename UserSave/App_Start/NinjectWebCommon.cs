@@ -69,7 +69,7 @@ namespace UserSave.App_Start
         {
             kernel.Bind<IUnitOfWorkFactory>().ToFactory();
             kernel.Bind<IRepositoryFactory>().ToFactory();
-            kernel.Bind<UserContext>().ToSelf();
+            kernel.Bind<ApplicationDbContext>().ToSelf();
             kernel.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>));
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
         }

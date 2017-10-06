@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace UserSave.Models
+namespace UserSave.Infrastructure
 {
     public class ApplicationUser : IdentityUser
     {

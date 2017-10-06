@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using UserSave.Infrastructure;
 using UserSave.Models;
 
 namespace UserSave.Migrations
@@ -10,19 +11,19 @@ namespace UserSave.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<UserSave.Models.UserContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<UserSave.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "UserSave.Models.UserContext";
+            ContextKey = "UserSave.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(UserContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new UserContext()));
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
 
             var user = new ApplicationUser()
             {

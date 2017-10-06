@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using UserSave.Infrastructure;
 using UserSave.Models;
 
 namespace UserSave.Controllers
