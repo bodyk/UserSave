@@ -172,11 +172,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Authentication\AuthenticationFilter.cs" />
-    <Compile Include="Authentication\Helpers\AuthenticationFailureResult.cs" />
-    <Compile Include="Authentication\SimpleAuthorizeAttribute.cs" />
     <Compile Include="Authentication\Startup.cs" />
-    <Compile Include="Authentication\TokenAuthenticateAttribute.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -218,7 +214,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\CreateUserBindingModel.cs" />
-    <Compile Include="Models\Interfaces\IAuthService.cs" />
     <Compile Include="Models\Interfaces\IRepository.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Entities\UserContext.cs" />
