@@ -1,34 +1,26 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using UserSave.Models.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace UserSave.Models
 {
     /// <inheritdoc />
-    public class UserContext : DbContext
+    public class UserContext : IdentityDbContext<ApplicationUser>
     {
         /// <inheritdoc />
         public UserContext()
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer(new UserInitializer());
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
         }
 
-        /// <inheritdoc />
-        public UserContext(DbConnection connection)
-            : base(connection, true)
+        public static UserContext Create()
         {
-
+            return new UserContext();
         }
-        
-        public DbSet<User> Users { get; set; }
 
-        public DbSet<SocialAccount> SocialAccounts { get; set; }
-
-        /// <inheritdoc />
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
+        public DbSet<User> SiteUsers { get; set; }
     }
 }

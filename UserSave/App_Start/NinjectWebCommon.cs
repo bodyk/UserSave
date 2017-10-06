@@ -1,9 +1,6 @@
 using Ninject.Extensions.Factory;
 using UserSave.DataAccess.Interfaces;
 using UserSave.DataAccess.Repositories;
-using UserSave.Models.Interfaces;
-using UserSave.Providers;
-using UserSave.Services;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(UserSave.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(UserSave.App_Start.NinjectWebCommon), "Stop")]
@@ -71,8 +68,6 @@ namespace UserSave.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IUnitOfWorkFactory>().ToFactory();
-            kernel.Bind<IAuthService>().To<AuthJWTService>();
-            kernel.Bind<IMembershipProvider>().To<MembershipProvider>();
             kernel.Bind<IRepositoryFactory>().ToFactory();
             kernel.Bind<UserContext>().ToSelf();
             kernel.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>));
