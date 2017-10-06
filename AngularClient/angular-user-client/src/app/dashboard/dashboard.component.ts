@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.sass']
 })
 export class DashboardComponent implements OnInit {
   users: Observable<User[]>;
@@ -31,12 +31,10 @@ export class DashboardComponent implements OnInit {
   }
 
   onDeleteUser(id: number) : void {
-    debugger;
     this.userService.deleteUser(id).then(() => this.updateUsers());
   }
 
   onEditUser(id: number) : void {
-    debugger
     this.router.navigate(['../user', id]);
   }
 
