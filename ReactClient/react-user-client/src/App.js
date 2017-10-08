@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Root } from './components/Root';
-import { Router, Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class App extends Component {
   render() {
@@ -13,4 +13,9 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(
+  state => ({
+    testStore: state
+  }),
+  dispatch => ({})
+)(App);

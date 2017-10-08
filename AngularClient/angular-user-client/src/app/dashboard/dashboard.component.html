@@ -3,7 +3,7 @@
         <div class="col-sm-4 col-md-4">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <div href="#" [class.active]="sortType === 'Name'" (click)="setOrder('Name')">
+                    <div [class.active]="sortType === 'Name'" (click)="setOrder('Name')">
                         Name <span [hidden]="sortReverse">▼</span><span [hidden]="!sortReverse">▲</span>
                     </div>
                 </div>
@@ -58,23 +58,5 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col-xs-2 text-center">
-            {{user.Name}}
-        </div>
-        <div class="col-xs-2 col-half-offset text-center">
-            {{user.Surname}}
-        </div>
-        <div class="col-xs-2 col-half-offset text-center">
-            {{user.Email}}
-        </div>
-        <div class="col-xs-2 col-half-offset text-center">
-            {{user.Gender}}
-        </div>
-        <div class="col-xs-2 align-self-end text-center">
-            <button (click)="onEditUser(user.Id)">Edit</button>
-        </div>
-        <div class="col-xs-2 col-half-offset columnDelete text-center">
-            <button (click)="onDeleteUser(user.Id)">Delete</button>
-        </div> -->
     </div>
 </div>
