@@ -1,10 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Http;
+﻿using System.Linq;
+using System.Net.Http.Formatting;
 using Microsoft.Owin;
-using Microsoft.Owin.Security.OAuth;
 using Owin;
-using UserSave.Providers;
+using System.Web.Http;
+using Newtonsoft.Json.Serialization;
+using UserSave.Infrastructure;
+using UserSave.Models;
 
 [assembly: OwinStartup(typeof(UserSave.Authentication.Startup))]
 
@@ -14,22 +15,33 @@ namespace UserSave.Authentication
     {
         public void Configuration(IAppBuilder app)
         {
-            // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
+            HttpConfiguration httpConfig = new HttpConfiguration();
+
+            ConfigureOAuthTokenGeneration(app);
+
+            ConfigureWebApi(httpConfig);
+
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
-            var provider = new AuthorizationServerProvider();
-            OAuthAuthorizationServerOptions options = new OAuthAuthorizationServerOptions
-            {
-                AllowInsecureHttp = true,
-                TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-                Provider = provider
-            };
-            app.UseOAuthAuthorizationServer(options);
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+            app.UseWebApi(httpConfig);
+        }
 
-            HttpConfiguration config = new HttpConfiguration();
-            WebApiConfig.Register(config);
+        private void ConfigureOAuthTokenGeneration(IAppBuilder app)
+        {
+            // Configure the db context and user manager to use a single instance per request
+            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+
+            // Plugin the OAuth bearer JSON Web Token tokens generation and Consumption will be here
+
+        }
+
+        private void ConfigureWebApi(HttpConfiguration config)
+        {
+            config.MapHttpAttributeRoutes();
+
+            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }

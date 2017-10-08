@@ -18,7 +18,7 @@ export class RegisterModal extends ComponentModalConfig<void> {
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.sass']
 })
 export class RegisterComponent implements OnInit {
 

@@ -15,15 +15,15 @@ export class ApiBaseService {
       .map(res => res.json());
   }
 
-  protected delete(deleteRequest: string): Promise<any> {
-    return this.http.delete(deleteRequest).toPromise();
+  protected async delete(deleteRequest: string): Promise<any> {
+    return await this.http.delete(deleteRequest).toPromise();
   }
 
-  protected post(postRequest: string, content: any): Promise<any> {
-    return this.http.post(postRequest, content).toPromise();
+  protected async post(postRequest: string, content: any): Promise<any> {
+    return await this.http.post(postRequest, content).toPromise();
   }
 
-  protected put(putRequest: string, content: any): Promise<any> {
-    return this.http.put(putRequest, content).toPromise();
+  protected async put(putRequest: string, content: any): Promise<any> {
+    return await this.http.put(putRequest, content).toPromise();
   }
 }

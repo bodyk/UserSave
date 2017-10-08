@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.sass']
 })
 export class UserComponent implements OnInit {
 
@@ -40,7 +40,6 @@ export class UserComponent implements OnInit {
   }
 
   onAddUser() : void {
-    debugger;
     if (this.isEdit){
       this._userService.putUser(this.user);
     }else {
