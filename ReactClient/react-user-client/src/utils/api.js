@@ -11,5 +11,8 @@ module.exports = {
         .then(function(response) {
             return response;
         });
+    },
+    deleteUser: function(id) {
+        return axios.delete('/Users/' + id);
     }
 }

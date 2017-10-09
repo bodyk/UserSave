@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { RowData } from './RowData';
+import { Link } from 'react-router-dom';
+import { Gender } from '../../models/Gender';
+
+var api = require('../../utils/api');
 
 export class TableRow extends React.Component {
+    DeleteUser() {
+        console.log("Delete");
+        api.deleteUser(this.props.user.Id)
+        .then(() => {
+            this.props.updateCallback();
+        });
+    }
+
     render() {
-        const Color = {
-            0 : 'Male',
-            1 : 'Female'
-        }
 
         return (
             <div>
@@ -20,16 +28,17 @@ export class TableRow extends React.Component {
                 <div className="col-sm-4 col-md-4">
                     <div className="row">
                         <RowData rowText={ this.props.user.Email }/>
-                        <RowData rowText={ Color[this.props.user.Gender] }/>
+                        <RowData rowText={ Gender[this.props.user.Gender] }/>
                     </div>
                 </div>
                 <div className="col-sm-4 col-md-4">
                     <div className="row">
                         <div className="col-sm-12 col-md-6">
-                            <button>Edit</button>
+                            <Link to={{ pathname: '/user/' + this.props.user.Id,
+                            state: { isUserEdit: true, user: this.props.user } }}>Edit</Link>
                         </div>
                         <div className="col-sm-12 col-md-6">
-                            <button>Delete</button>
+                            <a href="#" onClick={this.DeleteUser.bind(this)}>Delete</a>                           
                         </div>
                     </div>
                 </div>
@@ -39,5 +48,6 @@ export class TableRow extends React.Component {
 }
 
 TableRow.propTypes = {
-    user: PropTypes.object
+    user: PropTypes.object,
+    updateCallback: PropTypes.func
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { TableRow } from './TableRow';
 
 var api = require('../../utils/api');
@@ -14,7 +13,6 @@ export class TableBody extends React.Component {
         api.getAllUsers()
             .then(results => {
                 this.setState({users: (results.data)});
-                console.log(this.state.users);
             });
     }
 
@@ -26,7 +24,7 @@ export class TableBody extends React.Component {
         return (
             <div>
                 {this.state.users.map((user, i) => {
-                    return <TableRow user={user} key={i}/>
+                    return <TableRow user={user} key={i} updateCallback={this.getUsers.bind(this)}/>
                 })}
             </div>
         );

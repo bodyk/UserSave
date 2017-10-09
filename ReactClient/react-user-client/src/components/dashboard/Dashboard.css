@@ -3,10 +3,6 @@
     font-size: 14pt;
 }
 
-.row:nth-child(even) {
-    background: #428BCA;
-}
-
 .dashboard {
     border: 1px solid black;
     margin-top: 2em;
