@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using UserSave.Infrastructure;
 using UserSave.Models;
 
 namespace UserSave.Migrations
@@ -22,21 +21,6 @@ namespace UserSave.Migrations
         protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
-
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-
-            var user = new ApplicationUser()
-            {
-                UserName = "SuperPowerUser",
-                Email = "balanykb.@gmail.com",
-                EmailConfirmed = true,
-                FirstName = "Bogdan",
-                LastName = "Balanyk",
-                Level = 1,
-                JoinDate = DateTime.Now.AddYears(-3)
-            };
-
-            manager.Create(user, "leobit@1");
 
             IList<User> defaultUsers = new List<User>
             {
