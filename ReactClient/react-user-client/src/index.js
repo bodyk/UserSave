@@ -8,6 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'; 
+window.React = require('react');
 
 function reducer(state = [], action) {
     return state;

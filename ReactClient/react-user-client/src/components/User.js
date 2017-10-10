@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Gender } from '../models/Gender';
 import './User.css';
-var api = require('../utils/api');
+let api = require('../utils/api');
 
 export class User extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ export class User extends React.Component {
         // Init form legend header based on parameter
         let mode = "Add";
         try {
-            if (this.props.location.state.isUserEdit !== undefined && this.props.location.state.isUserEdit) {
+            if ('isUserEdit' in this.props.location.state) {
                 mode = "Edit";
             }
         } 
@@ -36,7 +36,7 @@ export class User extends React.Component {
     getUser() {
         let user = {};
         try {
-            if (this.props.location.state.user !== undefined && this.props.location.state.user) {
+            if ('user' in this.props.location.state) {
                 user = this.props.location.state.user;
             }
         } 

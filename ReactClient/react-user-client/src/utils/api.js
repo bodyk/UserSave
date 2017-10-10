@@ -1,5 +1,5 @@
-var axios = require('axios');
-var base = require('axios-base-url/base')('http://localhost:52818/api/');
+let axios = require('axios');
+let base = require('axios-base-url/base')('http://localhost:52818/api/');
 axios.interceptors.request.use(base);
 
 const USERS_CONTROLLER_NAME = "/Users/";
