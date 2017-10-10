@@ -53,7 +53,7 @@ export class User extends React.Component {
             <select id="gender" name="gender" className="form-control input-md" ref="gender">
                { 
                     this.state.genderKeys.map(function (obj, i) {
-                        return <option value={i} key={i}>{obj}</option>
+                        return <option defaultValue={i} key={i}>{obj}</option>
                     })
                }
             </select>
@@ -62,20 +62,25 @@ export class User extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (this.state.mode === "Add") {
-            let newUser = {
-                name: this.refs.name.value,
-                surname: this.refs.surname.value,
-                email: this.refs.email.value,
-                gender: this.refs.gender.value
-            };
 
+        let newUser = {
+            id: this.state.user.Id,
+            name: this.refs.name.value,
+            surname: this.refs.surname.value,
+            email: this.refs.email.value,
+            gender: this.refs.gender.value
+        };
+
+        if (this.state.mode === "Add") {
             api.addUser(newUser)
                 .then(() => {
                     console.log("Add user");
                 });
         } else {
-            
+            api.putUser(newUser, this.state.user.Id)
+                .then(() => {
+                    console.log("Update user");
+                });
         }
     }
 
@@ -90,7 +95,7 @@ export class User extends React.Component {
                             <input id="name" name="name" type="text" 
                                 placeholder="Name" className="form-control input-md" required=""
                                 ref="name"
-                                value={this.state.user.Name}/>
+                                defaultValue={this.state.user.Name}/>
                         </div>
                     </div>
                     
@@ -99,7 +104,7 @@ export class User extends React.Component {
                             <input id="surname" name="surname" type="text" 
                                 placeholder="Surname" className="form-control input-md" required=""
                                 ref="surname"
-                                value={this.state.user.Surname}/>
+                                defaultValue={this.state.user.Surname}/>
                         </div>
                     </div>
                     
@@ -108,7 +113,7 @@ export class User extends React.Component {
                             <input id="email" name="email" type="text" 
                                 placeholder="Email" className="form-control input-md" required=""
                                 ref="email"
-                                value={this.state.user.Email}/>
+                                defaultValue={this.state.user.Email}/>
                         </div>
                     </div>
                     
