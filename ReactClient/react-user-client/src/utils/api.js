@@ -14,5 +14,8 @@ module.exports = {
     },
     deleteUser: function(id) {
         return axios.delete('/Users/' + id);
+    },
+    addUser: function(user) {
+        return axios.post('/Users/', user);
     }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Gender } from '../models/Gender';
 import './User.css';
+var api = require('../utils/api');
 
 export class User extends React.Component {
     constructor(props) {
@@ -62,9 +63,17 @@ export class User extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.state.mode === "Add") {
-            console.log(e);
-            console.log(this.state.user);
-            console.log(this.refs);            
+            let newUser = {
+                name: this.refs.name.value,
+                surname: this.refs.surname.value,
+                email: this.refs.email.value,
+                gender: this.refs.gender.value
+            };
+
+            api.addUser(newUser)
+                .then(() => {
+                    console.log("Add user");
+                });
         } else {
             
         }
