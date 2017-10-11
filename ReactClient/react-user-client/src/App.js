@@ -13,9 +13,9 @@ class App extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    testStore: state
-  }),
-  dispatch => ({})
+export default connect( state => {
+    return {
+      users: state
+    }
+  }
 )(App);

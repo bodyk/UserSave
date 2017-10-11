@@ -2,9 +2,15 @@ import React from 'react';
 import { UserSorter } from '../../helpers/UserSorter';
 import SortableTable from 'react-sortable-table';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 let api = require('../../utils/api');
 
+connect((store) => {
+    return {
+        user: store.user.user
+    }
+})
 export class SortableDashboard extends React.Component {
     constructor() {
       super()
