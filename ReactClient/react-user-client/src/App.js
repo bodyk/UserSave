@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Root } from './components/Root';
 import { BrowserRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
@@ -12,10 +11,3 @@ class App extends Component {
     );
   }
 }
-
-export default connect( state => {
-    return {
-      users: state
-    }
-  }
-)(App);

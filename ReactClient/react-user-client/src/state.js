@@ -3,12 +3,15 @@ import {
     combineReducers,
     applyMiddleware
 } from 'redux';
+import logger from 'redux-logger';
 import middlewarePromises from './middlewares/promises';
-import * as reducers from './reducers';
+import { apiMiddleware } from 'redux-api-middleware';
+import usersReducer from './reducers';
 
-const reducer = combineReducers(reducers);
-
-let createStoreWithMiddleware = applyMiddleware(middlewarePromises)(createStore);
+const reducer = combineReducers({
+    users: usersReducer
+});
+const createStoreWithMiddleware = applyMiddleware(apiMiddleware, logger)(createStore);
 
 const store = createStoreWithMiddleware(reducer, {
     users: []

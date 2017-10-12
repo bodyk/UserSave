@@ -48,7 +48,6 @@ export class User extends React.Component {
     }
 
     formGenderSelection() {
-        console.log(this.state.genderKeys);
         return (
             <select id="gender" name="gender" className="form-control input-md" ref="gender">
                { 

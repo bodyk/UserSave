@@ -3,15 +3,12 @@ import { UserSorter } from '../../helpers/UserSorter';
 import SortableTable from 'react-sortable-table';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getAllUsers, deleteUser } from '../../actions/userActions';
 
 let api = require('../../utils/api');
 
-connect((store) => {
-    return {
-        user: store.user.user
-    }
-})
-export class SortableDashboard extends React.Component {
+class SortableDashboard extends React.Component {
     constructor() {
       super()
       this.state = {users: []};
@@ -32,7 +29,8 @@ export class SortableDashboard extends React.Component {
     }
 
     componentDidMount() {
-        this.getUsers();
+        //this.getUsers();
+        this.props.getAllUsers();
     }
 
     deleteUser(id, updateCallback) {
@@ -43,7 +41,7 @@ export class SortableDashboard extends React.Component {
             });
     }
    
-    render() {
+    render() {    
       const columns = [
         {
           header: 'Name',
@@ -90,12 +88,12 @@ export class SortableDashboard extends React.Component {
         },
         {
             header: 'Delete',
-            key: 'deleteInfo',
+            key: 'Id',
             headerStyle: { fontSize: '15px' },
             headerProps: { className: 'align-left' },
             sortable: false,
-            render: ((deleteInfo) => {        
-                return (<a href="#" onClick={() => deleteInfo.deleteCallback(deleteInfo.Id, deleteInfo.updateCallback)}>Delete</a>);
+            render: ((Id) => { 
+                return (<a href="#" onClick={() => this.props.deleteUser(Id)}>Delete</a>);
             })
         }
       ];
@@ -109,12 +107,18 @@ export class SortableDashboard extends React.Component {
         paddingLeft: '5px',
         paddingRight: '5px'
       };
+      let users = this.props.users.payload === undefined ? [] : this.props.users.payload;
       return (
         <SortableTable
-          data={this.state.users}
+          data={users}
           columns={columns}
           style={style}
           iconStyle={iconStyle} />
       );
     }
-  }
+}
+
+export default connect(
+    (state) => {return {users: state.users};},
+    (dispatch) => bindActionCreators({getAllUsers, deleteUser}, dispatch)
+)(SortableDashboard);
