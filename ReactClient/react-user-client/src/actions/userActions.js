@@ -27,12 +27,14 @@ export function deleteUser(id) {
 }
 
 export function addUser(user) {
+    console.log(user);
     return {
         [CALL_API]: {
             endpoint: BASE_URL + user.id,
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             types: [types.POST_USER_REQUEST, types.POST_USER_RECEIVE, types.POST_USER_FAILURE],
-            body: user
+            body: JSON.stringify(user)
         }
     }
 }

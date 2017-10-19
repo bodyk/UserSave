@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import SortableDashboard from './sortable-dashboard/SortableDashboard';
-import { User } from './User';
+import User from './User';
 
 export const Main = () => (
   <main>

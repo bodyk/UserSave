@@ -43,6 +43,7 @@ export class UserComponent implements OnInit {
     if (this.isEdit){
       this._userService.putUser(this.user);
     }else {
+      console.log(this.user);
       this._userService.addUser(this.user);
     }
 

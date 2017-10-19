@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Gender } from '../models/Gender';
 import './User.css';
+import { addUser, putUser } from '../actions/userActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 let api = require('../utils/api');
 
-export class User extends React.Component {
+class User extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -71,15 +75,17 @@ export class User extends React.Component {
         };
 
         if (this.state.mode === "Add") {
-            api.addUser(newUser)
-                .then(() => {
-                    console.log("Add user");
-                });
+            this.props.addUser(newUser);
+            // api.addUser(newUser)
+            //     .then(() => {
+            //         console.log("Add user");
+            //     });
         } else {
-            api.putUser(newUser, this.state.user.Id)
-                .then(() => {
-                    console.log("Update user");
-                });
+            this.props.putUser(newUser, this.state.user.Id);            
+            // api.putUser(newUser, this.state.user.Id)
+            //     .then(() => {
+            //         console.log("Update user");
+            //     });
         }
     }
 
@@ -137,3 +143,8 @@ User.propTypes = {
     user: PropTypes.object,
     isUserEdit: PropTypes.bool
 };
+
+export default connect(
+    (state) => {return {users: state.users.users};},
+    (dispatch) => bindActionCreators({addUser, putUser}, dispatch)
+)(User);

@@ -7,13 +7,11 @@ export default function usersReducer(state = {
 
     switch (action.type) {
         case types.GET_USERS_RECEIVE:
-            console.log(`GET USERS RECEIVE - ${state}`);
             return {
                 ...state,
                 users: action.payload
             };
         case types.POST_USER_RECEIVE:
-            console.log(action.payload);
             return state;
         case types.PUT_USER_RECEIVE:
             console.log(action.payload);
