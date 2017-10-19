@@ -83,7 +83,7 @@ class SortableDashboard extends React.Component {
             sortable: false,
             render: ((Id) => {
                 return (<Link to={{ pathname: '/user/' + Id,
-                    state: { isUserEdit: true, user: this.state.users[Id] } }}>Edit</Link>);
+                    state: { isUserEdit: true, user: this.props.users.find((user) => user.Id === Id) } }}>Edit</Link>);
             })
         },
         {

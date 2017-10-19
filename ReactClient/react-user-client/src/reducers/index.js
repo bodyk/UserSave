@@ -2,6 +2,7 @@ import * as types from '../models/actionTypes';
 
 export default function usersReducer(state = {
     users: [],
+    userToPut: {},
     error: null
 }, action) {
 
@@ -14,11 +15,8 @@ export default function usersReducer(state = {
         case types.POST_USER_RECEIVE:
             return state;
         case types.PUT_USER_RECEIVE:
-            console.log(action.payload);
             return state;
         case types.DELETE_USER_RECEIVE:
-            console.log(state);
-            console.log(action.payload);
             return state;
         default:
             break;

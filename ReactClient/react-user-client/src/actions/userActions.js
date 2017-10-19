@@ -44,8 +44,9 @@ export function putUser(user, id) {
         [CALL_API]: {
             endpoint: BASE_URL + id,
             method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },            
             types: [types.PUT_USER_REQUEST, types.PUT_USER_RECEIVE, types.PUT_USER_FAILURE],
-            body: user
+            body: JSON.stringify(user)
         }
     }
 }
