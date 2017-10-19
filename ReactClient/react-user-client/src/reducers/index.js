@@ -1,12 +1,16 @@
 import * as types from '../models/actionTypes';
 
-export default function usersReducer(state = [], action) {
+export default function usersReducer(state = {
+    users: [],
+    error: null
+}, action) {
 
     switch (action.type) {
         case types.GET_USERS_RECEIVE:
+            console.log(`GET USERS RECEIVE - ${state}`);
             return {
                 ...state,
-                payload: state.concat(action.payload)
+                users: action.payload
             };
         case types.POST_USER_RECEIVE:
             console.log(action.payload);

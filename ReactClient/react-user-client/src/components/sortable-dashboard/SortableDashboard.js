@@ -28,7 +28,7 @@ class SortableDashboard extends React.Component {
             });
     }
 
-    componentDidMount() {
+    componentWillMount() {
         //this.getUsers();
         this.props.getAllUsers();
     }
@@ -107,7 +107,7 @@ class SortableDashboard extends React.Component {
         paddingLeft: '5px',
         paddingRight: '5px'
       };
-      let users = this.props.users.payload === undefined ? [] : this.props.users.payload;
+      let users = this.props.users === undefined ? [] : this.props.users;
       return (
         <SortableTable
           data={users}
@@ -119,6 +119,6 @@ class SortableDashboard extends React.Component {
 }
 
 export default connect(
-    (state) => {return {users: state.users};},
+    (state) => {return {users: state.users.users};},
     (dispatch) => bindActionCreators({getAllUsers, deleteUser}, dispatch)
 )(SortableDashboard);
