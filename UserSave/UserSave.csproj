@@ -213,6 +213,7 @@
       <DependentUpon>201710101523586_removeAccountData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Entities\UserInitializer.cs" />
     <Compile Include="Models\Interfaces\IRepository.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Entities\ApplicationDbContext.cs" />

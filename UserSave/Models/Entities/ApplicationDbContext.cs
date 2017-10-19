@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Microsoft.AspNet.Identity.EntityFramework;
+using UserSave.Models.Entities;
 
 namespace UserSave.Models
 {
@@ -14,6 +15,7 @@ namespace UserSave.Models
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
+            Database.SetInitializer(new UserInitializer());
         }
 
         public static ApplicationDbContext Create()
