@@ -18,8 +18,8 @@
 
 <!-- Select Basic -->
 <div class="inputWrapper">
-    <select id="gender" name="gender" [(ngModel)]="user.Gender" class="form-control">
-        <option *ngFor="let key of keys" [ngValue]="key">{{key}}</option>
+    <select id="gender" name="gender" (change)="SelectGenderChanged($event)" class="form-control">
+        <option *ngFor="let key of keys" [ngValue]="key" [selected]="isSelected(key)">{{key}}</option>
     </select>
 </div>
 

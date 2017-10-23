@@ -19,10 +19,11 @@ export class DashboardComponent implements OnInit {
 
   constructor(private userService: UserService, private http: Http, private router: Router) { 
     this.sortType = 'name';
-    this.sortReverse = false;
+    this.sortReverse = false;   
   }
 
   ngOnInit() {
+    console.log('Init');
     this.updateUsers();    
   }
 

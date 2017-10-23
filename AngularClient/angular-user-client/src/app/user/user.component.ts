@@ -41,12 +41,26 @@ export class UserComponent implements OnInit {
 
   onAddUser() : void {
     if (this.isEdit){
-      this._userService.putUser(this.user);
+      this._userService.putUser(this.user).then(() => {
+        this.router.navigate(['/dashboard']);        
+      });
     }else {
       console.log(this.user);
-      this._userService.addUser(this.user);
+      this._userService.addUser(this.user).then(() => {
+        this.router.navigate(['/dashboard']);    
+      });
     }
-    this.router.navigate(['/dashboard']);
   }
 
+  SelectGenderChanged($event) {
+    this.user.Gender = parseInt(Gender[$event.target.value]);
+  }
+
+  isSelected(key) {
+    if (this.isEdit) {
+      return key === Gender[this.user.Gender];
+    }
+
+    return true;
+  }
 }
