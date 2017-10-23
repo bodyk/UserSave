@@ -3,7 +3,7 @@ import { User } from "../models/User";
 import { Gender } from "../models/Gender";
 import { isNumber } from "util";
 import { UserService } from "../services/user/user.service";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
   private sub: any;
   @Input() user: User;
 
-  constructor(private _userService: UserService, private route: ActivatedRoute) {
+  constructor(private _userService: UserService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class UserComponent implements OnInit {
       console.log(this.user);
       this._userService.addUser(this.user);
     }
-
+    this.router.navigate(['/dashboard']);
   }
 
 }
