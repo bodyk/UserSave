@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getAllUsers, deleteUser } from '../../actions/userActions';
+import { Gender } from '../../models/Gender';
 
 let api = require('../../utils/api');
 
@@ -73,7 +74,10 @@ class SortableDashboard extends React.Component {
             headerStyle: { fontSize: '15px' },
             headerProps: { className: 'align-left' },
             descSortFunction: UserSorter.desc,
-            ascSortFunction: UserSorter.asc
+            ascSortFunction: UserSorter.asc,
+            render: ((gender) => {
+                return Gender[gender];
+            })
         },
         {
             header: 'Edit',
