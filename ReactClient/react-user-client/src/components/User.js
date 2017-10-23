@@ -51,7 +51,7 @@ class User extends React.Component {
     }
 
     isSelected(key) {
-        if (this.state.user) {W
+        if (this.state.user) {
             return key === Gender[this.state.user.Gender];
           }
       
