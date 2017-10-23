@@ -11,17 +11,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import { ShellComponent } from './shell/shell.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
-import { TokenHelperService } from "./services/helper/token-helper/token-helper.service";
 import { SuiModalService, SuiComponentFactory, SuiModule } from "ng2-semantic-ui/dist";
-import { RegisterComponent } from './register/register-component/register.component';
-import { AuthenticationLoginService } from "./services/auth/authenticationlogin.service";
-import { AuthenticationEventService } from "./services/events/authentication-event/authentication-event.service";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireModule } from "angularfire2";
 import { environment } from "../environments/environment.prod";
 import { HttpClientModule } from "@angular/common/http";
-import { DataService } from "./services/data/data.service";
-import { RegisterUserComponent } from './register/register-user/register-user.component';
 
 import { OrderModule } from './order-pipe/ngx-order.module';
 
@@ -34,8 +28,6 @@ import { OrderModule } from './order-pipe/ngx-order.module';
     ShellComponent,
     MenuComponent,
     FooterComponent,
-    RegisterComponent,
-    RegisterUserComponent
   ],
   imports: [
     SuiModule,
@@ -49,16 +41,9 @@ import { OrderModule } from './order-pipe/ngx-order.module';
     OrderModule
   ],
   providers: [
-    AuthenticationLoginService,
-    AuthenticationEventService,
     UserService,
-    DataService,
-    TokenHelperService,
     SuiModalService,
     SuiComponentFactory],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    RegisterComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
