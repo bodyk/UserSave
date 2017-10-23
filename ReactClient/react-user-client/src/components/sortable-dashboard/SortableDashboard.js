@@ -7,39 +7,15 @@ import { bindActionCreators } from 'redux';
 import { getAllUsers, deleteUser } from '../../actions/userActions';
 import { Gender } from '../../models/Gender';
 
-let api = require('../../utils/api');
-
 class SortableDashboard extends React.Component {
     constructor() {
       super()
       this.state = {users: []};
     }
 
-    getUsers() {
-        api.getAllUsers()
-            .then(results => {
-                results.data.map((user) => {
-                    user.deleteInfo = {
-                        Id: user.Id,
-                        deleteCallback: this.deleteUser.bind(this),
-                        updateCallback: this.getUsers.bind(this)
-                    };
-                });
-                this.setState({users: (results.data)});
-            });
-    }
-
     componentWillMount() {
         //this.getUsers();
         this.props.getAllUsers();
-    }
-
-    deleteUser(id, updateCallback) {
-        api.deleteUser(id)
-            .then(() => {
-                console.log("Delete");
-                updateCallback();
-            });
     }
    
     render() {    

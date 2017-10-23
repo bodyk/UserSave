@@ -5,8 +5,7 @@ import './User.css';
 import { addUser, putUser } from '../actions/userActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
-let api = require('../utils/api');
+import { Link } from 'react-router-dom';
 
 class User extends React.Component {
     constructor(props) {
@@ -76,16 +75,8 @@ class User extends React.Component {
 
         if (this.state.mode === "Add") {
             this.props.addUser(newUser);
-            // api.addUser(newUser)
-            //     .then(() => {
-            //         console.log("Add user");
-            //     });
         } else {
-            this.props.putUser(newUser, this.state.user.Id);            
-            // api.putUser(newUser, this.state.user.Id)
-            //     .then(() => {
-            //         console.log("Update user");
-            //     });
+            this.props.putUser(newUser, this.state.user.Id);
         }
     }
 
@@ -130,7 +121,9 @@ class User extends React.Component {
                     
                     <div className="inputWrapper">
                         <div className="form-group">
+                        <Link to="/">
                             <button id="Submit" name="Submit" className="btn btn-primary">Submit</button>
+                        </Link>
                         </div>
                     </div>
                 </fieldset>
