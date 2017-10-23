@@ -50,13 +50,22 @@ class User extends React.Component {
         return user;
     }
 
+    isSelected(key) {
+        if (this.state.user) {W
+            return key === Gender[this.state.user.Gender];
+          }
+      
+          return true;
+    }
+
     formGenderSelection() {
+        let isSelected = this.isSelected;
         return (
             <select id="gender" name="gender" className="form-control input-md" ref="gender">
                { 
                     this.state.genderKeys.map(function (obj, i) {
-                        return <option defaultValue={i} key={i}>{obj}</option>
-                    })
+                        return <option selected={this.isSelected(obj)} key={i}>{obj}</option>
+                    }.bind(this))
                }
             </select>
         );
@@ -121,9 +130,7 @@ class User extends React.Component {
                     
                     <div className="inputWrapper">
                         <div className="form-group">
-                        <Link to="/">
                             <button id="Submit" name="Submit" className="btn btn-primary">Submit</button>
-                        </Link>
                         </div>
                     </div>
                 </fieldset>
