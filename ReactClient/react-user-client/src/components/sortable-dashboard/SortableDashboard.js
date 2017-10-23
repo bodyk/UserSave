@@ -93,7 +93,9 @@ class SortableDashboard extends React.Component {
             headerProps: { className: 'align-left' },
             sortable: false,
             render: ((Id) => { 
-                return (<a href="#" onClick={() => this.props.deleteUser(Id)}>Delete</a>);
+                return (<a href="#" onClick={() => {
+                    this.props.deleteUser(Id).then(() => this.props.getAllUsers());
+                }}>Delete</a>);
             })
         }
       ];
