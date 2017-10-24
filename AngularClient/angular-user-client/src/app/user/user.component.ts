@@ -25,29 +25,29 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.user = new User();
     // Get values from enum
-    this.keys = Object.keys(Gender).map(k => Gender[k]).filter(v => typeof v === "string") as string[];
+    this.keys = Object.keys(Gender).map(k => Gender[k]).filter(v => typeof v === 'string') as string[];
 
     this.sub = this.route.params.subscribe(params => {
-      this.header = "Add";
+      this.header = 'Add';
       if (params['id']) {
         this._userService.getUserById(params['id']).subscribe(user => {
           this.user = user;
           this.isEdit = true;
-          this.header = "Edit";
+          this.header = 'Edit';
         });
       }
    });
   }
 
-  onAddUser() : void {
-    if (this.isEdit){
+  onAddUser(): void {
+    if (this.isEdit) {
       this._userService.putUser(this.user).then(() => {
-        this.router.navigate(['/dashboard']);        
+        this.router.navigate(['/dashboard']);
       });
     }else {
       console.log(this.user);
       this._userService.addUser(this.user).then(() => {
-        this.router.navigate(['/dashboard']);    
+        this.router.navigate(['/dashboard']);
       });
     }
   }

@@ -7,9 +7,9 @@ import { User } from "../../models/User";
 @Injectable()
 export class UserService extends ApiBaseService {
 
-  constructor(protected http: Http) { 
+  constructor(protected http: Http) {
     super(http);
-    this.baseRequest += "Users/";  
+    this.baseRequest += 'Users/';
   }
 
   getUsers() {
@@ -20,15 +20,15 @@ export class UserService extends ApiBaseService {
     return this.get(this.baseRequest + '/' + id);
   }
 
-  addUser(user: User) : Promise<any> {
+  addUser(user: User): Promise<any> {
     return this.post(this.baseRequest, user);
   }
 
-  putUser(user: User) : Promise<any> {
+  putUser(user: User): Promise<any> {
     return this.put(this.baseRequest + '/' + user.Id, user);
   }
 
-  deleteUser(id: number) : Promise<any> {
+  deleteUser(id: number): Promise<any> {
     return this.delete(this.baseRequest + '/' + id);
   }
 }

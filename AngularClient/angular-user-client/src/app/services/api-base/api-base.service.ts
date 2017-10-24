@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ApiBaseService {
-  protected baseRequest: string = "http://localhost:52818/api/";
+  protected baseRequest = 'http://localhost:52818/api/';
 
   constructor(protected http: Http) { }
 

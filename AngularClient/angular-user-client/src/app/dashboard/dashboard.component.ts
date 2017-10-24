@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../services/user/user.service";
+import { UserService } from '../services/user/user.service';
 import { Http, Response } from '@angular/http';
-import { Observable } from "rxjs/Observable";
-import { User } from "../models/User";
-import { Gender} from "../models/Gender";
+import { Observable } from 'rxjs/Observable';
+import { User } from '../models/User';
+import { Gender} from '../models/Gender';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,25 +17,25 @@ export class DashboardComponent implements OnInit {
   sortType: string;
   sortReverse: boolean;
 
-  constructor(private userService: UserService, private http: Http, private router: Router) { 
+  constructor(private userService: UserService, private http: Http, private router: Router) {
     this.sortType = 'name';
-    this.sortReverse = false;   
+    this.sortReverse = false;
   }
 
   ngOnInit() {
     console.log('Init');
-    this.updateUsers();    
+    this.updateUsers();
   }
 
-  updateUsers() { 
+  updateUsers() {
     this.users = this.userService.getUsers();
   }
 
-  onDeleteUser(id: number) : void {
+  onDeleteUser(id: number): void {
     this.userService.deleteUser(id).then(() => this.updateUsers());
   }
 
-  onEditUser(id: number) : void {
+  onEditUser(id: number): void {
     this.router.navigate(['../user', id]);
   }
 

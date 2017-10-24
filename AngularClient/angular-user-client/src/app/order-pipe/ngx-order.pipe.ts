@@ -38,7 +38,7 @@ export class OrderPipe implements PipeTransform {
       expression = OrderPipe.parseExpression(expression);
     }
 
-    let array: any[] = value.sort((a: any, b: any): number => {
+    const array: any[] = value.sort((a: any, b: any): number => {
       if (!expression) {
         return a > b ? 1 : -1;
       }
@@ -66,7 +66,7 @@ export class OrderPipe implements PipeTransform {
    * @returns {any[]}
    */
   private transformObject(value: any | any[], expression?: any, reverse?: boolean): any {
-    let parsedExpression = OrderPipe.parseExpression(expression);
+    const parsedExpression = OrderPipe.parseExpression(expression);
     let lastPredicate = parsedExpression.pop();
     let oldValue = OrderPipe.getValue(value, parsedExpression);
 
@@ -90,6 +90,7 @@ export class OrderPipe implements PipeTransform {
    * @param expression
    * @returns {string[]}
    */
+  // tslint:disable-next-line:member-ordering
   private static parseExpression(expression: string): string[] {
     expression = expression.replace(/\[(\w+)\]/g, '.$1');
     expression = expression.replace(/^\./, '');
@@ -103,6 +104,7 @@ export class OrderPipe implements PipeTransform {
    * @param expression
    * @returns {any}
    */
+  // tslint:disable-next-line:member-ordering
   private static getValue(object: any, expression: string[]) {
     for (let i = 0, n = expression.length; i < n; ++i) {
       const k = expression[i];
@@ -122,6 +124,7 @@ export class OrderPipe implements PipeTransform {
    * @param value
    * @param expression
    */
+  // tslint:disable-next-line:member-ordering
   private static setValue(object: any, value: any, expression: string[]) {
     let i;
     for (i = 0; i < expression.length - 1; i++) {

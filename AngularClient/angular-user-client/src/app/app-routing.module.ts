@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { UserComponent } from "./user/user.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
   }, {
     path: 'user/:id',
     component: UserComponent
-  },{
+  }, {
     path: 'user',
     component: UserComponent
   }
