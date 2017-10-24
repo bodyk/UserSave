@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ApiBaseService } from "../api-base/api-base.service";
+import { ApiBaseService } from '../api-base/api-base.service';
 import { Http, Response } from '@angular/http';
-import { User } from "../../models/User";
+import { User } from '../../models/User';
 
 
 @Injectable()
