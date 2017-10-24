@@ -5,6 +5,7 @@ using Owin;
 using System.Web.Http;
 using Newtonsoft.Json.Serialization;
 using UserSave.Models;
+using UserSave.Models.Entities;
 
 [assembly: OwinStartup(typeof(UserSave.Authentication.Startup))]
 

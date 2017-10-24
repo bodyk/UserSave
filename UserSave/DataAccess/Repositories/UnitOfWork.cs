@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using UserSave.DataAccess.Interfaces;
+﻿using UserSave.DataAccess.Interfaces;
 using UserSave.Models;
+using UserSave.Models.Entities;
 
 namespace UserSave.DataAccess.Repositories
 {

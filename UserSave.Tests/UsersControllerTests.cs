@@ -6,7 +6,6 @@ using System.Web.Http.Results;
 using UserSave.Controllers;
 using UserSave.DataAccess.Interfaces;
 using UserSave.Models;
-using UserSave.Models.Interfaces;
 
 namespace UserSave.Tests
 {

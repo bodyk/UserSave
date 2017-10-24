@@ -1,6 +1,7 @@
 using Ninject.Extensions.Factory;
 using UserSave.DataAccess.Interfaces;
 using UserSave.DataAccess.Repositories;
+using UserSave.Models.Entities;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(UserSave.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(UserSave.App_Start.NinjectWebCommon), "Stop")]

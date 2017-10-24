@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using UserSave.Models;
+using UserSave.Models.Entities;
 
 namespace UserSave.Migrations
 {
@@ -10,7 +11,7 @@ namespace UserSave.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<UserSave.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {

@@ -1,10 +1,6 @@
-﻿using System.Data.Common;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using Microsoft.AspNet.Identity.EntityFramework;
-using UserSave.Models.Entities;
+﻿using System.Data.Entity;
 
-namespace UserSave.Models
+namespace UserSave.Models.Entities
 {
     /// <inheritdoc />
     public class ApplicationDbContext : DbContext
