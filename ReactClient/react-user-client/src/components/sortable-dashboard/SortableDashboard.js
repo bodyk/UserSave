@@ -14,7 +14,6 @@ class SortableDashboard extends React.Component {
     }
 
     componentWillMount() {
-        //this.getUsers();
         this.props.getAllUsers();
     }
    

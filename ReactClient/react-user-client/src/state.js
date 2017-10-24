@@ -4,7 +4,6 @@ import {
     applyMiddleware
 } from 'redux';
 import logger from 'redux-logger';
-import middlewarePromises from './middlewares/promises';
 import { apiMiddleware } from 'redux-api-middleware';
 import usersReducer from './reducers';
 

@@ -59,7 +59,6 @@ class User extends React.Component {
     }
 
     formGenderSelection() {
-        let isSelected = this.isSelected;
         return (
             <select id="gender" name="gender" className="form-control input-md" ref="gender">
                { 
